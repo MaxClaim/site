@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accident Help Atlanta – Free Checklist & Attorney Connect | MaxClaim Atlanta</title>
+<link rel="icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#D72638;--blue:#0066CC;--text:#1f2937;--muted:#6b7280;--bg:#ffffff;--border:#e5e7eb}
+  body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--text)}
+  .container{max-width:960px;margin:0 auto;padding:20px}
+  .hero{padding:24px;text-align:center;background:#fff;border-radius:16px;border:1px solid var(--border)}
+  .hero h1{color:var(--red);font-size:28px;margin:0 0 10px}
+  .btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;padding:12px 18px;border-radius:10px;font-weight:700}
+  .grid{display:grid;gap:20px;margin-top:20px}
+  @media(min-width:800px){.grid{grid-template-columns:1fr 1fr}}
+  .card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px}
+  label{display:block;margin:10px 0 4px;font-weight:600}
+  input,select,textarea{width:100%;padding:10px;border:1px solid #ccc;border-radius:8px}
+  .submit{margin-top:12px}
+  .bullets{padding-left:18px}
+  .closer{color:var(--red);font-weight:800;text-align:center;margin:20px 0}
+  .footer-mini{text-align:center;color:#777;margin-top:30px;font-size:12px}
+  .tcard{margin-top:14px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px;position:relative}
+  .tslide{display:none}
+  .tslide.active{display:block}
+  .tquote{font-style:italic;margin:0 0 8px}
+  .tauthor{font-weight:600}
+  .tdots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+  .tdot{width:8px;height:8px;border-radius:50%;background:#ccc;cursor:pointer}
+  .tdot.active{background:#111}
+</style>
+</head>
+<body>
+<div class="container" id="en">
+  <section class="hero">
+    <h1>🚨 Were You Injured in a Car Accident? 🚨</h1>
+    <p>Get your FREE Accident Recovery Checklist + connect with the right attorney today.</p>
+    <a class="btn" href="#form">Get My Free Checklist</a>
+  </section>
+
+  <div class="grid">
+    <section class="card" id="form">
+      <h2>📋 Claim Your Free Checklist</h2>
+      <!-- FIXES: cleaned field names, added honeypot, kept POST + hidden form-name -->
+      <form name="lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+        <input type="hidden" name="form-name" value="lead">
+        <p style="display:none;">
+          <label>Don’t fill this out: <input name="bot-field" /></label>
+        </p>
+        <label>First Name<input name="first-name" required></label>
+        <label>Phone<input type="tel" name="phone" required></label>
+        <label>Email (optional)<input type="email" name="email"></label>
+        <label>Date of Accident<input type="date" name="accident-date" required></label>
+        <label>At Fault?
+          <select name="at-fault">
+            <option value=""></option>
+            <option>No</option>
+            <option>Yes</option>
+            <option>Not sure</option>
+          </select>
+        </label>
+        <label>Police Report?
+          <select name="police-report">
+            <option value=""></option>
+            <option>Yes</option>
+            <option>No</option>
+            <option>Not sure</option>
+          </select>
+        </label>
+        <button class="btn submit" type="submit">✅ Claim My Free Checklist</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Why Call Us?</h2>
+      <ul class="bullets">
+        <li>✔ Learn moves that insurance companies don’t want you to know</li>
+        <li>✔ Stop leaving money on the table after your accident</li>
+        <li>✔ Get matched with the attorney most likely to <strong>win you more</strong></li>
+        <li>✔ It’s free — keep your cash for your recovery</li>
+      </ul>
+      <p class="closer">🔥 Be happy about your settlement — YOU get the final say!</p>
+
+      <div class="tcard" id="slider">
+        <div class="tslide active"><p class="tquote">“They walked me through every step and I was even able to call throughout the process for advice.”</p><div class="tauthor">James D. (Union City)</div></div>
+        <div class="tslide"><p class="tquote">“I almost settled too fast, I'm glad I gave them a call, they got me more than I thought my case was worth.”</p><div class="tauthor">Marcus W. (Marietta)</div></div>
+        <div class="tslide"><p class="tquote">“They matched me with an attorney who actually listened and moved quickly on my case.”</p><div class="tauthor">Tanya R. (Decatur)</div></div>
+        <div class="tslide"><p class="tquote">“I didn’t know what to do after the crash. This made it simple and I avoided mistakes.”</p><div class="tauthor">Alex G. (Smyrna)</div></div>
+        <div class="tslide"><p class="tquote">“I finally understood my options and felt good about my settlement decision.”</p><div class="tauthor">Renee C. (College Park)</div></div>
+        <div class="tdots"></div>
+      </div>
+    </section>
+  </div>
+  <p class="footer-mini">© <span id="year"></span> MaxClaim Atlanta • <a href="/privacy.html">Privacy Policy</a></p>
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  const slider = document.getElementById("slider");
+  const slides = slider.querySelectorAll(".tslide");
+  const dotsWrap = slider.querySelector(".tdots");
+  let i=0;
+  slides.forEach((_,idx)=>{let d=document.createElement("div");d.className="tdot"+(idx===0?" active":"");d.onclick=()=>show(idx);dotsWrap.appendChild(d)});
+  const dots = dotsWrap.querySelectorAll(".tdot");
+  function show(n){slides[i].classList.remove("active");dots[i].classList.remove("active");i=(n+slides.length)%slides.length;slides[i].classList.add("active");dots[i].classList.add("active")}
+  setInterval(()=>show(i+1),6000);
+</script>
+
+<!-- Hidden fallback form for Netlify detection (matches main form) -->
+<form name="lead" method="POST" data-netlify="true" hidden>
+  <input type="hidden" name="form-name" value="lead" />
+  <input type="text" name="first-name">
+  <input type="text" name="phone">
+  <input type="email" name="email">
+  <input type="text" name="accident-date">
+  <input type="text" name="at-fault">
+  <input type="text" name="police-report">
+</form>
+</body>
+</html>

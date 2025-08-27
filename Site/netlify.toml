@@ -1,0 +1,6 @@
+# Netlify configuration file
+[build]
+  publish = "."
+
+[build.processing.forms]
+  enabled = true
